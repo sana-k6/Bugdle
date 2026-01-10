@@ -1,3 +1,11 @@
+//
+//  BugdleViewModel.swift
+//  Bugdle
+//
+//  Created by Sana Kulkarni on 10/01/2026.
+//
+
+
 import Foundation
 import SwiftUI
 import Combine
