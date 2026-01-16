@@ -32,7 +32,7 @@ class BugdleViewModel: ObservableObject {
             let allProblems = try JSONDecoder().decode([BugProblem].self, from: data)
             
             // 3. FILTER: Only Java and Python
-            let allowed = ["java", "python"]
+            let allowed = ["java", "python3"]
             let filtered = allProblems.filter { allowed.contains($0.language.lowercased()) }
             
             // 4. PICK: Select today's bug based on date
@@ -61,13 +61,13 @@ class BugdleViewModel: ObservableObject {
 
         if cleanUser == cleanSol {
             gameStatus = .won
-            feedback = "Success! You squashed the bug."
+            feedback = "Success! You squashed the bug. It was: \n\(problem.bug_explanation)"
         } else {
             attemptsLeft -= 1
             feedback = "Incorrect. \(attemptsLeft) attempts remaining."
             if attemptsLeft <= 0 {
                 gameStatus = .lost
-                feedback = "Game Over. Ideally, it was: \n\(problem.solution)"
+                feedback = "Game Over. Ideally, it was: \n \(problem.bug_explanation) \n \(problem.solution) "
             }
         }
     }
