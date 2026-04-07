@@ -25,3 +25,5 @@ export type DailyState = {
     currentState: State,
     date: number,
 }
+
+export type TileState = "correct" | "present" | "absent";
