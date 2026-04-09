@@ -1,4 +1,5 @@
-import { Puzzle, TileState } from "./types";
+
+import { Puzzle } from "./types";
 
 export function getBugLine(puzzle:Puzzle) : {lineIndex: number, buggyLine: string, correctLine: string} | null {
     const buggyCodeLines = puzzle.buggy_code.split("\n");
@@ -16,3 +17,15 @@ export function getBugLine(puzzle:Puzzle) : {lineIndex: number, buggyLine: strin
     return null; // No bug found
 }
 
+export function isCorrectLine(selectedIndex: number, puzzle: Puzzle): boolean{
+    if (selectedIndex < 0) return false;
+    const bugInfo = getBugLine(puzzle);
+    if (!bugInfo) return false;
+    return selectedIndex === bugInfo.lineIndex;
+}
+
+export function isCorrectFix(guess: string, puzzle: Puzzle): boolean{
+    const bugInfo = getBugLine(puzzle);
+    if (!bugInfo) return false;
+    return guess.trim() === bugInfo.correctLine.trim();
+}

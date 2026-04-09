@@ -1,6 +1,7 @@
 export type Language = "python3" | "java"
 export type Level = "easy" | "medium" | "hard"
 export type State = "playing" | "won" | "lost"
+export type LineIndex = number | null
 export type Puzzle ={
     id: number,
     slug : string,
@@ -23,7 +24,6 @@ export type DailyState = {
     attempts: string[],
     currentAttempt: string,
     currentState: State,
+    currentLineIndex: LineIndex,
     date: number,
 }
-
-export type TileState = "correct" | "present" | "absent";
